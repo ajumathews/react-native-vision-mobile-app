@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { ActivityIndicator, Alert, Button, StyleSheet, View } from "react-native";
 import { analyzeImageWithVision } from '../services/visionService';
 
-const UploadImageButton = ({title = 'Upload Image'}) => {
+const UploadImageAndAnalyse = ({title = 'Upload Image'}) => {
   const [analyzing, setAnalyzing] = useState(false);
   const router = useRouter();
   const handleUpload = async () => {
@@ -66,4 +66,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default UploadImageButton;
+export default UploadImageAndAnalyse;

@@ -1,6 +1,6 @@
 import { View } from "react-native";
-import OpenCameraButton from "./components/OpenCameraButton";
-import UploadImageButton from "./components/UploadImageButton";
+import CaptureImageAndAnalyse from "./components/CaptureImageAndAnalyse";
+import UploadImageAndAnalyse from "./components/UploadImageAndAnalyse";
 
 export default function Index() {
   return (
@@ -11,10 +11,10 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <OpenCameraButton
+      <CaptureImageAndAnalyse
         title="Open Camera"
       />
-      <UploadImageButton
+      <UploadImageAndAnalyse
         title="Upload Image"
       />
     </View>

@@ -5,7 +5,7 @@ import { useRef, useState } from 'react';
 import { ActivityIndicator, Alert, Button, Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { analyzeImageWithVision } from '../services/visionService';
 
-const OpenCameraButton = ({ title = 'Open Camera' }) => {
+const CaptureImageAndAnalyse = ({ title = 'Open Camera' }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [permission, requestPermission] = useCameraPermissions();
   const [analyzing, setAnalyzing] = useState(false);
@@ -160,4 +160,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OpenCameraButton;
+export default CaptureImageAndAnalyse;
