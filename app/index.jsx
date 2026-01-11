@@ -1,4 +1,6 @@
-import { Text, View } from "react-native";
+import { View } from "react-native";
+import OpenCameraButton from "./components/OpenCameraButton";
+import UploadImageButton from "./components/UploadImageButton";
 
 export default function Index() {
   return (
@@ -9,7 +11,12 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Edit app/index.jsx to edit this screen.</Text>
+      <OpenCameraButton
+        title="Open Camera"
+      />
+      <UploadImageButton
+        title="Upload Image"
+      />
     </View>
   );
 }
