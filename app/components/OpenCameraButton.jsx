@@ -37,9 +37,6 @@ const OpenCameraButton = ({ title = 'Open Camera' }) => {
       
       const extractedText = await analyzeImageWithVision(imageUri);
       
-      // Close camera modal
-      setModalVisible(false);
-      
       // Navigate to results page
       router.push({
         pathname: '/results',
@@ -59,6 +56,9 @@ const OpenCameraButton = ({ title = 'Open Camera' }) => {
         const photo = await cameraRef.current.takePictureAsync();
         console.log('Photo taken:', photo.uri);
         
+        // Close camera modal immediately
+        setModalVisible(false);
+        
         // Analyze the image with AI
         await analyzeImage(photo.uri);
       } catch (error) {
@@ -70,7 +70,12 @@ const OpenCameraButton = ({ title = 'Open Camera' }) => {
 
   return (
     <View style={{ margin: 20 }}>
-      <Button title={title} onPress={openCamera} />
+      <Button title={title} onPress={openCamera} disabled={analyzing} />
+      {analyzing && (
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator size="small" color="#007AFF" style={{marginTop: 10}} />
+        </View>
+      )}
       <Modal
         visible={modalVisible}
         animationType="slide"
@@ -96,13 +101,6 @@ const OpenCameraButton = ({ title = 'Open Camera' }) => {
               <TouchableOpacity style={styles.closeButton} onPress={closeCamera}>
                 <Text style={styles.closeButtonText}>✕</Text>
               </TouchableOpacity>
-              
-              {analyzing && (
-                <View style={styles.loadingOverlay}>
-                  <ActivityIndicator size="large" color="#fff" />
-                  <Text style={styles.loadingText}>Analyzing image...</Text>
-                </View>
-              )}
             </>
           )}
         </View>
@@ -157,20 +155,8 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '300',
   },
-  loadingOverlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    justifyContent: 'center',
+  loadingContainer: {
     alignItems: 'center',
-  },
-  loadingText: {
-    color: '#fff',
-    marginTop: 10,
-    fontSize: 16,
   },
 });
 
