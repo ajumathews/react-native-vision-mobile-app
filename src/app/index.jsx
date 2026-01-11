@@ -1,6 +1,6 @@
 import { View } from "react-native";
-import CaptureImageAndAnalyse from "./components/CaptureImageAndAnalyse";
-import UploadImageAndAnalyse from "./components/UploadImageAndAnalyse";
+import CaptureImageAndAnalyse from "../components/CaptureImageAndAnalyse";
+import UploadImageAndAnalyse from "../components/UploadImageAndAnalyse";
 
 export default function Index() {
   return (
